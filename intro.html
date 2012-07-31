@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Perfect Fold</title>
+<style type="text/css">
+<!--
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	background:#e1f2ff;
+}
+body > section{
+	width:900px;
+	margin:50px auto;
+	padding:30px;
+	border-radius:25px;
+	background:#fff;
+	box-shadow: 0 0 20px 0px #000;
+}
+h1{
+	font-size:30px;
+	text-transform:uppercase;
+}
+pre{
+	color:#fff;
+}
+pre.numbering{
+	color:#000;
+}
+pre b, pre i, pre em, pre strong, pre span{
+	font-style:normal;
+	font-weight:normal;
+}
+pre b{
+	color:#fb1f70;
+}
+pre i{
+	color:#60d9f1;
+}
+pre em{
+	color:#e7d556;
+}
+pre strong{
+	color:#ae7df5;
+}
+pre span{
+	color:#a4db00;
+}
+pre .comment{
+	color:#999992;
+}
+#code_block{
+	width:500px;
+	border:0;
+	padding:0;
+	border:0;
+	background:#272922;
+}
+td{
+	padding:0;
+	margin:0;
+	border:0;
+}
+td.numbering{
+	 background: #cccccc;
+	 padding:0 12px 0 4px;
+	 width:10px;
+}
+#default{
+	margin:0 auto;
+}
+#default > li{
+	clear:both;
+}
+ul, li{
+	list-style:none;
+	margin:0;
+	padding:0;
+	font-size:13px;
+	color:#333;
+}
+ul li li{
+	float:left;
+	padding:8px 5px;
+	border-top:1px solid #ccc;
+}
+ul ul li:first-child{
+	clear:both;
+	width:150px;
+	background: #ddd;
+	border-left: 1px solid #ccc;
+}
+ul ul li:first-child + li{
+	width:100px;
+	background: #eee;
+}
+ul ul li:first-child + li + li{
+	width:120px;
+	background: #ddd;
+}
+ul ul li:first-child + li + li + li{
+	width:480px;
+	background: #eee;
+	border-right: 1px solid #ccc;
+}
+ul > li:last-child li{
+	border-bottom:1px solid #ccc;
+}
+-->
+</style>
+</head>
+<body>
+<section>
+    <h1>Perfect Fold Image Stretch plugin</h1>
+    <p>By: Pete Rugh</p>
+    <h2>Introduction</h2>
+    <p>
+        This plugin is a solution to a problem I ran into enough times to necessitate an off-the-shelf solution. Given different browser sizes and in particular, different devices, deciding on where the fold is has become near impossible. This means that when beautiful marquee images are in a design, they need to be cropped to fit most folds. This leads to mixed results and leaves people with either no indication of further content, or an ugly design with a tiny marquee.
+    </p>
+    <p> 
+        Another issue is how to choose how wide to make an image. You can always shoot for 2560px wide (iMac 27"), but file sizes increase as it gets wider, and the audience you are catering to fails to justify the trade off.
+    </p>
+    <p> 
+        These 2 problems are solved by the Perfect Fold Image Stretch plugin. There are many other plugins that let you fill an entire screen vertically and horizontally, but they are not flexible. This plugin achieves what those plugins do, but adds the addition of an offset variable. You can now specify how much content you want showing below a marquee iamge. This means that you can offer the same amount of content to entice users to scroll to regardless of screen size.
+    </p>
+    <p> 
+        So designers are coders can live in harmony knowing that beautiful marquee images now can be enjoyed on all screen sizes while maintaing adherance to the fold rule.
+    </p>
+    <h2>Simplest Usage</h2>
+    <table cellspacing="0" id="code_block">
+        <tr>
+            <td valign="top" class="numbering">
+    <pre class="numbering">
+    1
+    2
+    3
+    </pre>
+            </td>
+            <td valign="top" style="padding:0 0 0 10px;">
+    <pre>
+    <b>$</b>(<i>document</i>).ready(<i>function</i>(){
+        <b>$</b>(<em>"img"</em>).sizeImage();
+    });
+    </pre>
+            </td>
+        </tr>
+    </table>
+    
+    <h2>Utilizing all variables with non-default values</h2>
+    
+    <table cellspacing="0" id="code_block">
+        <tr>
+            <td valign="top" class="numbering">
+    <pre class="numbering">
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+    </pre>
+            </td>
+            <td valign="top" style="padding:0 0 0 10px;">
+    <pre>
+    <b>$</b>(<i>document</i>).ready(<i>function</i>(){
+        <b>$</b>(<em>"img"</em>).sizeImage({
+            alignVertical: <em>'bottom'</em>,
+            alignHorizontal: <em>'right'</em>
+            container: <em>'#stretch_holder'</em>,
+            easingMethod: <em>'easeOutQuad'</em>,
+            fadeTime: <strong>5000</strong>
+            heightMax: <strong>900</strong>,
+            heightMin: <strong>400</strong>,
+            offset: <strong>270</strong>,
+            changeOnResize: <strong>true</strong>,
+            <span>imageLoaded</span>: <i>function</i>() {
+                <span class="comment">//more code</span>
+                <span class="comment">//stack plugin on top?</span>
+            }
+        });
+    });
+    </pre>
+            </td>
+        </tr>
+    </table>
+    
+    <h2>Default Values</h2>
+    
+    <ul id="default">
+        <li>
+            <ul>
+                <li>alignHorizontal</li>
+                <li>'center'</li>
+                <li>Type: String</li>
+                <li>'left', 'center', 'right'</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>alignVertical</li>
+                <li>'middle'</li>
+                <li>Type: String</li>
+                <li>'top', 'middle', 'bottom'</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>changeOnResize</li>
+                <li>true</li>
+                <li>Type: Bool</li>
+                <li>Whether or not to recalculate when resizing viewport</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>container</li>
+                <li>this.parent()</li>
+                <li>Type: Selector</li>
+                <li>Plugin assumes that the parent element is the container.</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>easingMethod</li>
+                <li>'swing'</li>
+                <li>Type: String</li>
+                <li>jQuery easing method</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>fadeTime</li>
+                <li>2000</li>
+                <li>Type: Int</li>
+                <li>Image fade in length</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>heightMax</li>
+                <li>null</li>
+                <li>Type: Int</li>
+                <li>Maximum image height</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>heightMin</li>
+                <li>null</li>
+                <li>Type: Int</li>
+                <li>Minimum image height</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>imageLoaded</li>
+                <li>function() {}</li>
+                <li>Type: Function</li>
+                <li>Execute code after the plugin is finished resizing. <strong>Fires 1 time only</strong>.</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>offset</li>
+                <li>0</li>
+                <li>Type: Int</li>
+                <li>Amount of space to leave visible below image in viewport. Int is pixels</li>
+            </ul>
+        </li>
+    </ul>
+    <span style="display:block; clear:both;"></span>
+    <h2>Examples coming soon</h2>
+</section>
+</body>
+</html>

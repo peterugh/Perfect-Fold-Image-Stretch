@@ -2,7 +2,7 @@
 *
 * @author Pete Rugh peterugh@gmail.com 
 *
-* Image Stretching jQuery Plugin
+* Perfect Fold Image Stretch jQuery Plugin
 *
 * ©2012 Pete Rugh
 *

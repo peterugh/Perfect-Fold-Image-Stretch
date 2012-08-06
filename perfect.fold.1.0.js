@@ -2,7 +2,7 @@
 *
 * @author Pete Rugh peterugh@gmail.com 
 *
-* Perfect Fold Image Stretch jQuery Plugin
+* Image Stretching jQuery Plugin
 *
 * ©2012 Pete Rugh
 *
@@ -213,35 +213,24 @@ jQuery.fn.sizeImage = function (options) {
 			posImg();
 		}
 	});
+
 	adjustedHeight = $(window).height() - theOffset;
 
+	//check to make sure the image is loaded.
+	var imgLoadCheck = setInterval(function () {
+		if ($(theImage).prop('complete') == true) {
+			posImg();
+			//has the plugin main function fired?
+			if (activated == false) {
+				//run a function once when the first image loads
+				if (options.imageLoaded) {
+					options.imageLoaded.call(this);
+				}
+				//this keeps the function from running multiple times
+				activated = true;
+			}
 
-	//browser sniffing to support $.load() and $.ready()
-	if ($.browser.webkit == true) {
-		$(theImage).load(function () {
-			posImg();
-			//has the plugin main function fired?
-			if (activated == false) {
-				//run a function once when the first image loads
-				if (options.imageLoaded) {
-					options.imageLoaded.call(this);
-				}
-				//this keeps the function from running multiple times
-				activated = true;
-			}
-		});
-	} else {
-		$(theImage).ready(function () {
-			posImg();
-			//has the plugin main function fired?
-			if (activated == false) {
-				//run a function once when the first image loads
-				if (options.imageLoaded) {
-					options.imageLoaded.call(this);
-				}
-				//this keeps the function from running multiple times
-				activated = true;
-			}
-		});
-	}
+			clearInterval(imgLoadCheck);
+		}
+	}, 100);
 };

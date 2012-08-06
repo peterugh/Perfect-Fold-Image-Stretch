@@ -102,7 +102,7 @@ jQuery.fn.sizeImage = function (options) {
 	}
 	//make it transparent until it is loaded
 	//make it positioned absolute	
-	theImage
+	$(theImage)
 		.css({
 			opacity: 0,
 			position: 'absolute'

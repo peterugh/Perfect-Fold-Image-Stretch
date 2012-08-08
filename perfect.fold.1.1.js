@@ -93,7 +93,8 @@ jQuery.fn.sizeImage = function (options) {
 		scaledHeight,
 		scaledWidth,
 		halfOverflow,
-		theOffset = settings.offset + $(settings.container).position().top,	//calculate the true offset. This accounts for the container not being at the top of the viewport
+		//theOffset = settings.offset + $(settings.container).position().top,	//calculate the true offset. This accounts for the container not being at the top of the viewport
+		theOffset = 0,
 		theImage = this, //grab the image the plugin is attached to
 		adjustedHeight = $(window).height() - theOffset, //Determine how much to allow below the image
 		activated = false,

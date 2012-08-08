@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Perfect Fold Example</title>
+<style type="text/css">
+<!--
+body, section, img, h1, p{
+	margin:0;
+	padding:0;
+}
+body{
+	background:#ccc;
+}
+h1, p{
+	color:#fff;
+	padding-bottom:10px;
+}
+h1{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:24px;
+	letter-spacing:1px;
+}
+p{
+	font-family: Helvetica, Arial,sans-serif;
+	font-size:13px;
+	text-align:right;
+}
+#inner_content, #inner_content span{
+	height:170px;
+	left:50px;
+	position:absolute;
+	top:50px;
+	width:400px;
+}
+#inner_content{
+	border:2px solid #000;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;	
+}
+#inner_content span{
+	background:#000;
+	left:0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	top:0;
+	z-index:1;	
+}
+#inner_content section{	
+	padding:30px;
+	position:relative;
+	z-index:2;
+}
+-->
+</style>
+<script type="text/javascript" src="js/jq.1.7.2.js"></script>
+<script type="text/javascript" src="../perfect.fold.1.1.js"></script>
+</head>
+
+<body>
+<section>
+	<img src="img/sculpture.jpg" alt="sculpture" id="stretch_me" />
+    <section id="inner_content">
+    	<section>
+	    	<h1>"Woman In Grief"</h1>
+    	    <p>
+        		Artist: <em>Unknown</em>
+        	</p>
+        	<p>
+        		Location: <em>Mount Olivet Cemetery</em><br />
+            	<em>Salt Lake City</em>
+        	</p>
+        </section>
+        <span></span>
+    </section>
+</section>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#stretch_me').sizeImage({
+		imageVisible: function(){
+			$('#inner_content')
+				.animate({
+					opacity: 1
+			});
+		},
+		fadeTime: 750
+	});
+});
+</script>
+</body>
+</html>

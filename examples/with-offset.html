@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Perfect Fold Example</title>
+<style type="text/css">
+<!--
+body, section, img, h1, p{
+	margin:0;
+	padding:0;
+}
+body{
+	background:#ccc;
+}
+h1, p{
+	color:#fff;
+	padding-bottom:10px;
+	font-family: Helvetica, Arial,sans-serif;
+}
+h1{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:72px;
+	text-transform:uppercase;
+}
+p{
+	font-size:13px;
+	line-height:150%;
+}
+#content_area{
+	-webkit-background-size: 50px 50px;
+	-moz-background-size: 50px 50px;
+	background-size: 50px 50px; /* Controls the size of the stripes */
+	background-color: #efefef;
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0,
+		color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent),
+		color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)),
+		color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent),
+		to(transparent));
+	background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+		transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+		transparent 75%, transparent);
+	background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+		transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+		transparent 75%, transparent);
+	background-image: -ms-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+		transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+		transparent 75%, transparent);
+	background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+		transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+		transparent 75%, transparent);
+	background-image: linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+		transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+		transparent 75%, transparent);
+	border-top:2px solid #333;
+	padding:25px 0;
+}
+article{
+	background:#333333;
+	box-shadow:0 0 10px 2px #333;
+	-moz-box-shadow:0 0 10px 2px #333;
+	-webkit-box-shadow:0 0 10px 2px #333;
+	margin:0 auto;
+	padding:20px;
+	width:920px;
+}
+-->
+</style>
+<script type="text/javascript" src="js/jq.1.7.2.js"></script>
+<script type="text/javascript" src="../perfect.fold.1.1.js"></script>
+</head>
+
+<body>
+<section>
+	<img src="img/sculpture.jpg" alt="sculpture" id="stretch_me" />
+</section>
+<section id="content_area">
+	<article>
+    	<h1>Perfect Fold</h1>
+        <p>
+        	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque metus nulla, luctus eget dapibus vel, sodales sollicitudin enim. Vestibulum et velit ligula, sed lacinia tellus. Nulla id sem erat, vel venenatis tortor. In in leo lacus, at tempus lorem. Praesent consequat purus vel velit placerat in commodo sem egestas. Duis non semper eros. Vivamus euismod mi at urna adipiscing sit amet ultrices ligula molestie. In gravida arcu tellus. Duis et odio sit amet leo malesuada faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum, urna vitae luctus pulvinar, enim odio semper neque, at consectetur tortor quam vel odio.
+        </p>
+        <p>
+        	Maecenas suscipit rutrum tincidunt. Aliquam erat volutpat. Nulla fermentum aliquam elit ut blandit. Maecenas quam nibh, feugiat in placerat eget, convallis id eros. Praesent ut augue nec diam posuere consequat vitae vitae lorem. Donec malesuada scelerisque risus, quis blandit elit lobortis eu. Sed lobortis odio a eros ultricies gravida ornare diam dignissim. Vestibulum semper turpis posuere turpis accumsan id fermentum lectus luctus. In hac habitasse platea dictumst. Mauris lobortis orci tempor ligula blandit ultrices. Fusce eget tortor mi. Aenean metus tellus, lobortis id bibendum eu, vehicula at tortor. Nunc nisi lectus, tempor nec vehicula suscipit, vulputate eget enim. Duis a velit at elit suscipit gravida eget et urna.
+		</p>
+        <p>
+            Maecenas feugiat placerat vehicula. Pellentesque leo purus, viverra eget volutpat a, tincidunt sit amet lacus. Donec fringilla sagittis aliquam. Maecenas sed sodales velit. Quisque imperdiet dui vitae sem porta ornare pretium felis rutrum. Cras risus tortor, elementum condimentum ultricies eget, mattis eget diam. In pellentesque hendrerit lectus in porta. In est turpis, aliquet ut rhoncus eget, viverra a purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus commodo, libero non tempor euismod, nulla enim elementum justo, elementum sagittis erat massa vitae est. Morbi et tempus dolor. Curabitur porta fringilla egestas. Vestibulum vulputate neque et neque eleifend non gravida erat molestie. Duis vestibulum felis sed ligula tristique adipiscing. Proin vitae enim eros. Aliquam erat volutpat.
+        </p>
+		<p>
+            Aliquam erat volutpat. Praesent hendrerit, justo hendrerit bibendum mollis, felis mauris gravida elit, nec dignissim augue purus sed lorem. Integer velit elit, pulvinar id convallis ut, molestie sed sem. Nunc vitae nisl lectus, eleifend iaculis dolor. In in diam arcu. Cras metus neque, congue ac convallis nec, interdum sed magna. Phasellus pellentesque odio purus, at semper neque. Vestibulum et nulla lorem. Integer quis pulvinar diam.
+		</p>
+        <p>
+            Suspendisse potenti. Nunc lobortis consequat ante vel mollis. Aenean elementum lectus ut magna luctus quis pretium tortor molestie. Nullam et ultrices tellus. Sed id felis in sem ultricies adipiscing. Vestibulum lectus orci, hendrerit vel tempus sed, fringilla sed ante. Aenean tincidunt, arcu id dictum volutpat, neque quam gravida augue, eget ultrices ligula justo ut tellus. Quisque nec magna ligula, at ornare enim. Pellentesque rutrum, dui a interdum condimentum, justo risus porttitor diam, non placerat dolor quam sit amet tellus. Vestibulum posuere dapibus rutrum. Maecenas eu lectus sem. Nullam pulvinar suscipit rutrum. Quisque vestibulum blandit pulvinar. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce fermentum molestie tellus et porta.
+        </p>
+    </article>
+</section>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#stretch_me').sizeImage({
+		offset: 140
+	});
+});
+</script>
+</body>
+</html>

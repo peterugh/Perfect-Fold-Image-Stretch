@@ -169,6 +169,9 @@ ul > li:last-child li{
 16
 17
 18
+19
+20
+21
 </pre>
             </td>
             <td valign="top" style="padding:0 0 0 10px;">
@@ -178,7 +181,7 @@ ul > li:last-child li{
         alignVertical: <em>'bottom'</em>,
         alignHorizontal: <em>'right'</em>
         container: <em>'#stretch_holder'</em>,
-        easingMethod: <em>'easeOutQuad'</em>,
+        easingMethod: <em>'linear'</em>,
         fadeTime: <strong>5000</strong>
         heightMax: <strong>900</strong>,
         heightMin: <strong>400</strong>,
@@ -187,6 +190,9 @@ ul > li:last-child li{
         <span>imageLoaded</span>: <i>function</i>() {
             <span class="comment">//more code</span>
             <span class="comment">//stack plugin on top?</span>
+        },
+        <span>imageVisible</span>: <i>function</i>() {
+            <span class="comment">//image is fully visible</span>
         }
     });
 });
@@ -267,7 +273,15 @@ ul > li:last-child li{
                 <li>imageLoaded</li>
                 <li>function() {}</li>
                 <li>Type: Function</li>
-                <li>Execute code after the plugin is finished resizing. <strong>Fires 1 time only</strong>.</li>
+                <li>Execute code after the image is loaded. <strong>Fires 1 time only</strong>.</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>imageVisible</li>
+                <li>function() {}</li>
+                <li>Type: Function</li>
+                <li>Execute code after the image is fully faded in.</li>
             </ul>
         </li>
         <li>
@@ -280,7 +294,6 @@ ul > li:last-child li{
         </li>
     </ul>
     <span style="display:block; clear:both;"></span>
-    <h2>Examples coming soon</h2>
 </section>
 </body>
 </html>

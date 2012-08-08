@@ -41,16 +41,17 @@ $("img").sizeImage({
 	offset : 0,					//Type: Int			Amount of space to leave visible below image in viewport. Int is pixels
 	changeOnResize: true,		//Type: Bool		Whether or not to recalculate when resizing viewport
 	imageLoaded: function() {}	//Type: Function	Execute code after the plugin is finished resizing. Fires 1 time only.
+	imageVisible: function(){}	//Type: Function	Executed after the image becomes fully visible
 });
 
 Utilizing all variables with non-default values
 
 $("img").sizeImage({
 	alignVertical: 'bottom',
-	alignHorizontal: 'right'
+	alignHorizontal: 'right',
 	container: '#stretch_holder',
 	easingMethod: 'easeOutQuad',
-	fadeTime: 5000
+	fadeTime: 5000,
 	heightMax: 900,
 	heightMin: 400,
 	offset: 270,
@@ -58,6 +59,9 @@ $("img").sizeImage({
 	imageLoaded: function() {
 		//more code
 		//stack plugin on top?
+	},
+	imageVisible: function() {
+		//happens after image is showing
 	}
 });
 
@@ -77,7 +81,8 @@ jQuery.fn.sizeImage = function (options) {
 		heightMin: null, //self explanatory
 		offset : 0,	//This means the container will extend to the bottom of the viewport, change it to move it up from the bottom of the viewport
 		changeOnResize: true,
-		imageLoaded: function () {}
+		imageLoaded: function () {},
+		imageVisible: function () {}
 	}, options),
 		containerHeight,
 		containerWidth,
@@ -91,7 +96,8 @@ jQuery.fn.sizeImage = function (options) {
 		theOffset = settings.offset + $(settings.container).position().top,	//calculate the true offset. This accounts for the container not being at the top of the viewport
 		theImage = this, //grab the image the plugin is attached to
 		adjustedHeight = $(window).height() - theOffset, //Determine how much to allow below the image
-		activated = false;
+		activated = false,
+		imgLoadCheck;
 
 	//determine the proper height based on heightMax and heightMin
 	if (settings.heightMax != null && settings.heightMax < adjustedHeight) {
@@ -146,7 +152,9 @@ jQuery.fn.sizeImage = function (options) {
 		theImage
 			.animate({
 				opacity: 1
-			}, settings.fadeTime, settings.easingMethod);
+			}, settings.fadeTime, settings.easingMethod, function(){
+				settings.imageVisible();
+			});
 
 		//the height/width of the container
 		containerHeight = adjustedHeight;
@@ -173,17 +181,16 @@ jQuery.fn.sizeImage = function (options) {
 			$(theImage).width(scaledWidth);
 
 		}
-
 		//Check for which way the user wants to align the image
 		switch (settings.alignVertical) {
 		case 'top':
 			$(theImage).css('top', 0);
 			break;
 		case 'bottom':
-			$(theImage).css('top', ((scaledHeight - containerHeight) * -1));
+			$(theImage).css('bottom', 0);
 			break;
 		default:
-			halfOverflow = ((scaledHeight - containerHeight) / 2) * -1;
+			halfOverflow = (Math.abs(($(theImage).height() - containerHeight) / 2)) * -1;
 			$(theImage).css('top', halfOverflow);
 			break;
 		}
@@ -194,10 +201,10 @@ jQuery.fn.sizeImage = function (options) {
 			$(theImage).css('left', 0);
 			break;
 		case 'right':
-			$(theImage).css('left', ((scaledWidth - containerWidth) * -1));
+			$(theImage).css('right', 0);
 			break;
 		default:
-			halfOverflow = (((scaledWidth - containerWidth) / 2)) * -1;
+			halfOverflow = (Math.abs((($(theImage).width() - containerWidth) / 2))) * -1;
 			$(theImage).css('left', halfOverflow);
 			break;
 		}
@@ -217,19 +224,18 @@ jQuery.fn.sizeImage = function (options) {
 	adjustedHeight = $(window).height() - theOffset;
 
 	//check to make sure the image is loaded.
-	var imgLoadCheck = setInterval(function () {
+	imgLoadCheck = setInterval(function () {
 		if ($(theImage).prop('complete') == true) {
 			posImg();
 			//has the plugin main function fired?
 			if (activated == false) {
 				//run a function once when the first image loads
 				if (options.imageLoaded) {
-					options.imageLoaded.call(this);
+					options.imageLoaded();
 				}
 				//this keeps the function from running multiple times
 				activated = true;
 			}
-
 			clearInterval(imgLoadCheck);
 		}
 	}, 100);

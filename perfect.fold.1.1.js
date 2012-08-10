@@ -94,7 +94,7 @@ jQuery.fn.sizeImage = function (options) {
 		scaledWidth,
 		halfOverflow,
 		//theOffset = settings.offset + $(settings.container).position().top,	//calculate the true offset. This accounts for the container not being at the top of the viewport
-		theOffset = settings.offset + 0,
+		theOffset = settings.offset,
 		theImage = this, //grab the image the plugin is attached to
 		adjustedHeight = $(window).height() - theOffset, //Determine how much to allow below the image
 		activated = false,
@@ -153,7 +153,7 @@ jQuery.fn.sizeImage = function (options) {
 		theImage
 			.animate({
 				opacity: 1
-			}, settings.fadeTime, settings.easingMethod, function(){
+			}, settings.fadeTime, settings.easingMethod, function () {
 				settings.imageVisible();
 			});
 

@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+pre{
+	color:#fff;
+}
+pre.numbering{
+	color:#000;
+}
+pre b, pre i, pre em, pre strong, pre span{
+	font-style:normal;
+	font-weight:normal;
+}
+pre b{
+	color:#fb1f70;
+}
+pre i{
+	color:#60d9f1;
+}
+pre em{
+	color:#e7d556;
+}
+pre strong{
+	color:#ae7df5;
+}
+pre span{
+	color:#a4db00;
+}
+pre .comment{
+	color:#999992;
+}
+#code_block{
+	width:500px;
+	border:0;
+	padding:0;
+	border:0;
+	background:#272922;
+}
+td{
+	padding:0;
+	margin:0;
+	border:0;
+}
+td.numbering{
+	 background: #cccccc;
+	 padding:0 12px 0 4px;
+	 width:10px;
+}

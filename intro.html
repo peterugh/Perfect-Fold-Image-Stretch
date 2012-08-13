@@ -3,111 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Perfect Fold</title>
-<style type="text/css">
-<!--
-body{
-	font-family: Arial, Helvetica, sans-serif;
-	background:#e1f2ff;
-}
-body > section{
-	width:900px;
-	margin:50px auto;
-	padding:30px;
-	border-radius:25px;
-	background:#fff;
-	box-shadow: 0 0 20px 0px #000;
-}
-h1{
-	font-size:30px;
-	text-transform:uppercase;
-}
-pre{
-	color:#fff;
-}
-pre.numbering{
-	color:#000;
-}
-pre b, pre i, pre em, pre strong, pre span{
-	font-style:normal;
-	font-weight:normal;
-}
-pre b{
-	color:#fb1f70;
-}
-pre i{
-	color:#60d9f1;
-}
-pre em{
-	color:#e7d556;
-}
-pre strong{
-	color:#ae7df5;
-}
-pre span{
-	color:#a4db00;
-}
-pre .comment{
-	color:#999992;
-}
-#code_block{
-	width:500px;
-	border:0;
-	padding:0;
-	border:0;
-	background:#272922;
-}
-td{
-	padding:0;
-	margin:0;
-	border:0;
-}
-td.numbering{
-	 background: #cccccc;
-	 padding:0 12px 0 4px;
-	 width:10px;
-}
-#default{
-	margin:0 auto;
-}
-#default > li{
-	clear:both;
-}
-ul, li{
-	list-style:none;
-	margin:0;
-	padding:0;
-	font-size:13px;
-	color:#333;
-}
-ul li li{
-	float:left;
-	padding:8px 5px;
-	border-top:1px solid #ccc;
-}
-ul ul li:first-child{
-	clear:both;
-	width:150px;
-	background: #ddd;
-	border-left: 1px solid #ccc;
-}
-ul ul li:first-child + li{
-	width:100px;
-	background: #eee;
-}
-ul ul li:first-child + li + li{
-	width:120px;
-	background: #ddd;
-}
-ul ul li:first-child + li + li + li{
-	width:480px;
-	background: #eee;
-	border-right: 1px solid #ccc;
-}
-ul > li:last-child li{
-	border-bottom:1px solid #ccc;
-}
--->
-</style>
+<link href="intro.css" rel="stylesheet" type="text/css">
+<link href="code.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <section>
@@ -201,15 +98,60 @@ ul > li:last-child li{
         </tr>
     </table>
     
+    <h2>Examples</h2>
+    
+    <p>
+    	This plugin, although simple to use, also offers a lot of flexibility. I have created several examples to illustrate how to combine the options to suit your needs.
+    </p>
+    
+    <ul id="examples">
+    	<li>
+            <h3><a href="examples/basic.html">Default Options</a></h3>           	            
+            <p>
+            	The plugin with no options passed into the object. Image fills entire visible window.
+            </p>
+        </li>
+    	<li>
+            <h3><a href="examples/with-offset.html">Default with vertical offset</a></h3>           	
+            <p>
+            	Setting a distance between image and bottom of visible window.
+            </p>
+        </li>
+    	<li>
+            <h3><a href="examples/as-container.html">Container content</a></h3>           	
+            <p>
+            	Using the plugin to set the targeted image as a background for content inside the same container.
+            </p>
+        </li>
+    	<li>
+            <h3><a href="examples/all-options.html">All options</a></h3>           	
+            <p>
+            	Overriding all the default options.
+            </p>
+        </li>
+    	<li>
+            <h3><a href="examples/vertical-image.html">Vertical Image</a></h3>           	
+            <p>
+            	Showing the effect while using an image with a vertical aspect ration.
+            </p>
+        </li>
+    	<li>
+            <h3><a href="examples/small-image.html">Small Image</a></h3>           	
+            <p>
+            	The plugin will stretch a small image to fill the container just as how it shrinks a large image.
+            </p>
+        </li>
+    </ul>
+    
     <h2>Default Values</h2>
     
     <ul id="default">
         <li>
             <ul>
-                <li>alignHorizontal</li>
+                <li class="round_top_left">alignHorizontal</li>
                 <li>'center'</li>
                 <li>Type: String</li>
-                <li>'left', 'center', 'right'</li>
+                <li class="round_top_right">'left', 'center', 'right'</li>
             </ul>
         </li>
         <li>
@@ -286,10 +228,10 @@ ul > li:last-child li{
         </li>
         <li>
             <ul>
-                <li>offset</li>
+                <li class="round_bottom_left">offset</li>
                 <li>0</li>
                 <li>Type: Int</li>
-                <li>Amount of space to leave visible below image in viewport. Int is pixels</li>
+                <li class="round_bottom_right">Amount of space to leave visible below image in viewport. Int is pixels</li>
             </ul>
         </li>
     </ul>

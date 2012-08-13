@@ -3,25 +3,43 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Perfect Fold Example</title>
-<style type="text/css">
-<!--
-body, section, img{
-	margin:0;
-	padding:0;
-}
-body{
-	background:#ccc;
-}
--->
-</style>
-<script type="text/javascript" src="js/jq.1.8.js"></script>
-<script type="text/javascript" src="../perfect.fold.1.1.js"></script>
+<link href="css/examples.css" rel="stylesheet" type="text/css">
+<link href="../code.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 <section id="image_holder">
 	<img src="img/sculpture-small.jpg" alt="sculpture" id="stretch_me" />
 </section>
+<section id="source_code">
+	<table cellspacing="0" id="code_block">
+        <tr>
+            <td valign="top" class="numbering">
+<pre class="numbering">
+1
+2
+3
+</pre>
+            </td>
+            <td valign="top" style="padding:0 0 0 10px;">
+<pre>
+<b>$</b>(<i>document</i>).ready(<i>function</i>(){
+    <b>$</b>(<em>"#stretch_me"</em>).sizeImage();
+});
+</pre>
+            </td>
+        </tr>
+    </table>
+    <a href="#close_code" id="hide_source_code">
+    	X
+    </a>
+</section>
+<a href="#view_source" id="view_source_code">
+	View Source
+</a>
+<script type="text/javascript" src="js/jq.1.8.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="../perfect.fold.1.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	

@@ -1,13 +1,15 @@
 @charset "UTF-8";
 
-body, section, img, h1, p{
+body, section, img, h1, p, #slide_show ul, #slide_show li{
 	margin:0;
 	padding:0;
 }
 body{
 	background:#ccc;
 }
-
+#slide_show ul, #slide_show li{
+	list-style:none;
+}
 .container h1, .container p{
 	color:#fff;
 	padding-bottom:10px;
@@ -55,21 +57,25 @@ body{
 }
 
 
-.all_options_offset h1, p{
+.all_options_offset h1, p,
+.with_cycle h1{
 	color:#fff;
 	padding-bottom:10px;
 	font-family: Helvetica, Arial,sans-serif;
 }
-.all_options_offset h1{
+.all_options_offset h1,
+.with_cycle h1{
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:72px;
 	text-transform:uppercase;
 }
-.all_options_offset p{
+.all_options_offset p,
+.with_cycle p{
 	font-size:13px;
 	line-height:150%;
 }
-.all_options_offset #content_area{
+.all_options_offset #content_area, 
+.with_cycle #content_area{
 	-webkit-background-size: 50px 50px;
 	-moz-background-size: 50px 50px;
 	background-size: 50px 50px; /* Controls the size of the stripes */
@@ -97,7 +103,8 @@ body{
 	border-top:2px solid #333;
 	padding:25px 0;
 }
-.all_options_offset article{
+.all_options_offset article,
+.with_cycle article{
 	background:#333333;
 	box-shadow:0 0 10px 2px #333;
 	-moz-box-shadow:0 0 10px 2px #333;

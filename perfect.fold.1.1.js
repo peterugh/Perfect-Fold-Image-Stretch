@@ -84,57 +84,34 @@ jQuery.fn.sizeImage = function (options) {
 		imageLoaded: function () {},
 		imageVisible: function () {}
 	}, options),
-		containerHeight,
-		containerWidth,
-		imageHeight,
-		imageWidth,
-		pctX,
-		pctY,
-		scaledHeight,
-		scaledWidth,
-		halfOverflow,
-		//theOffset = settings.offset + $(settings.container).position().top,	//calculate the true offset. This accounts for the container not being at the top of the viewport
-		theOffset = settings.offset,
-		theImage = this, //grab the image the plugin is attached to
-		adjustedHeight = $(window).height() - theOffset, //Determine how much to allow below the image
-		activated = false,
-		imgLoadCheck;
+	
+		functionCounter = 1,
+		zIndexPlacer = 100,
+		allImages = this;
 
-	//determine the proper height based on heightMax and heightMin
-	if (settings.heightMax != null && settings.heightMax < adjustedHeight) {
-		adjustedHeight = settings.heightMax;
-	}
-	if (settings.heightMin != null && settings.heightMin > adjustedHeight) {
-		adjustedHeight = settings.heightMin;
-	}
-	//make it transparent until it is loaded
-	//make it positioned absolute	
-	$(theImage)
-		.css({
-			opacity: 0,
-			position: 'absolute'
-		});
-
-	//size container intitally
-	//this creates the "frame" for the image before we have to wait for it to load
-	//the height will re-draw on resize
 	$(settings.container)
-		.css({
-			display: 'block',
-			left: '0',
-			overflow: 'hidden',
-			position: 'relative',
-			top: '0'
-		})
-		.height(adjustedHeight)
-		.width($(window).width());
+			.css({
+				height: 1
+			});
+	
 
-	//the function that actually repositions the image
-	function posImg() {
-
-		//get height of box
-		adjustedHeight = $(window).height() - theOffset;
-
+	this.each(function() {   
+		var	containerHeight,
+			containerWidth,
+			imageHeight,
+			imageWidth,
+			pctX,
+			pctY,
+			scaledHeight,
+			scaledWidth,
+			halfOverflow,
+			//theOffset = settings.offset + $(settings.container).position().top,	//calculate the true offset. This accounts for the container not being at the top of the viewport
+			theOffset = settings.offset,
+			theImage = this, //grab the image the plugin is attached to
+			adjustedHeight = $(window).height() - theOffset, //Determine how much to allow below the image
+			activated = false,
+			imgLoadCheck = false;
+	
 		//determine the proper height based on heightMax and heightMin
 		if (settings.heightMax != null && settings.heightMax < adjustedHeight) {
 			adjustedHeight = settings.heightMax;
@@ -142,102 +119,140 @@ jQuery.fn.sizeImage = function (options) {
 		if (settings.heightMin != null && settings.heightMin > adjustedHeight) {
 			adjustedHeight = settings.heightMin;
 		}
-		//redraw height & width of box
-		$(settings.container)
-			.height(adjustedHeight)
-			.width($(window).width());
-
-		//fade in image now that it is loaded
-		//use the default jquery animation method 
-
-		theImage
-			.animate({
-				opacity: 1
-			}, settings.fadeTime, settings.easingMethod, function () {
-				settings.imageVisible();
+		//make it transparent until it is loaded
+		//make it positioned absolute	
+		$(theImage)
+			.css({
+				opacity: 0,
+				position: 'absolute',
+				zIndex: zIndexPlacer
 			});
 
-		//the height/width of the container
-		containerHeight = adjustedHeight;
-		containerWidth = $(window).width();
+		zIndexPlacer = zIndexPlacer - 1;
 
-		//resize the image according to the container height/width
-		imageHeight = $(theImage).height();
-		imageWidth = $(theImage).width();
-
-		//determine the ratio of height/width to see what part of the image needs to be larger
-		pctY = containerHeight / imageHeight;
-		pctX = containerWidth / imageWidth;
-
-		if (pctX > pctY) {
-			//maintain aspect ratio so that it overflows x
-			scaledHeight = imageHeight * pctX;
-			$(theImage).height(scaledHeight);
-			$(theImage).width(containerWidth);
-
-		} else {
-			//maintain aspect ratio so it overflows y
-			scaledWidth = imageWidth * pctY;
-			$(theImage).height(containerHeight);
-			$(theImage).width(scaledWidth);
-
-		}
-		//Check for which way the user wants to align the image
-		switch (settings.alignVertical) {
-		case 'top':
-			$(theImage).css('top', 0);
-			break;
-		case 'bottom':
-			$(theImage).css('bottom', 0);
-			break;
-		default:
-			halfOverflow = (Math.abs(($(theImage).height() - containerHeight) / 2)) * -1;
-			$(theImage).css('top', halfOverflow);
-			break;
-		}
-
-		//Check for which way the user wants to align the image
-		switch (settings.alignHorizontal) {
-		case 'left':
-			$(theImage).css('left', 0);
-			break;
-		case 'right':
-			$(theImage).css('right', 0);
-			break;
-		default:
-			halfOverflow = (Math.abs((($(theImage).width() - containerWidth) / 2))) * -1;
-			$(theImage).css('left', halfOverflow);
-			break;
-		}
-	}
-
-
-	$(window).resize(function () {
-		//make sure the window resize should trigger resize
-		if (settings.changeOnResize) {
-			//recalculate the adjusted height on resize
+		//size container intitally
+		//this creates the "frame" for the image before we have to wait for it to load
+		//the height will re-draw on resize
+		$(settings.container)
+			.css({
+				display: 'block',
+				left: '0',
+				overflow: 'hidden',
+				position: 'relative',
+				top: '0'
+			})
+			.height(adjustedHeight)
+			.width($(window).width());
+	
+		//the function that actually repositions the image
+		function posImg() {
+	
+			//get height of box
 			adjustedHeight = $(window).height() - theOffset;
-			//resize the image
-			posImg();
-		}
-	});
-
-	adjustedHeight = $(window).height() - theOffset;
-
-	//check to make sure the image is loaded.
-	imgLoadCheck = setInterval(function () {
-		if ($(theImage).prop('complete') == true) {
-			posImg();
-			//has the plugin main function fired?
-			if (activated == false) {
-				//run a function once when the first image loads
-				if (options.imageLoaded) {
-					options.imageLoaded();
-				}
-				//this keeps the function from running multiple times
-				activated = true;
+	
+			//determine the proper height based on heightMax and heightMin
+			if (settings.heightMax != null && settings.heightMax < adjustedHeight) {
+				adjustedHeight = settings.heightMax;
 			}
-			clearInterval(imgLoadCheck);
+			if (settings.heightMin != null && settings.heightMin > adjustedHeight) {
+				adjustedHeight = settings.heightMin;
+			}
+			//redraw height & width of box
+			$(settings.container)
+				.height(adjustedHeight)
+				.width($(window).width());
+	
+			//fade in image now that it is loaded
+			//use the default jquery animation method 
+	
+			$(theImage)
+				.animate({
+					opacity: 1
+				}, settings.fadeTime, settings.easingMethod, function () {
+					settings.imageVisible();
+				});
+	
+			//the height/width of the container
+			containerHeight = adjustedHeight;
+			containerWidth = $(window).width();
+	
+			//resize the image according to the container height/width
+			imageHeight = $(theImage).height();
+			imageWidth = $(theImage).width();
+	
+			//determine the ratio of height/width to see what part of the image needs to be larger
+			pctY = containerHeight / imageHeight;
+			pctX = containerWidth / imageWidth;
+	
+			if (pctX > pctY) {
+				//maintain aspect ratio so that it overflows x
+				scaledHeight = imageHeight * pctX;
+				$(theImage).height(scaledHeight);
+				$(theImage).width(containerWidth);
+	
+			} else {
+				//maintain aspect ratio so it overflows y
+				scaledWidth = imageWidth * pctY;
+				$(theImage).height(containerHeight);
+				$(theImage).width(scaledWidth);
+	
+			}
+			//Check for which way the user wants to align the image
+			switch (settings.alignVertical) {
+			case 'top':
+				$(theImage).css('top', 0);
+				break;
+			case 'bottom':
+				$(theImage).css('bottom', 0);
+				break;
+			default:
+				halfOverflow = (Math.abs(($(theImage).height() - containerHeight) / 2)) * -1;
+				$(theImage).css('top', halfOverflow);
+				break;
+			}
+	
+			//Check for which way the user wants to align the image
+			switch (settings.alignHorizontal) {
+			case 'left':
+				$(theImage).css('left', 0);
+				break;
+			case 'right':
+				$(theImage).css('right', 0);
+				break;
+			default:
+				halfOverflow = (Math.abs((($(theImage).width() - containerWidth) / 2))) * -1;
+				$(theImage).css('left', halfOverflow);
+				break;
+			}
 		}
-	}, 100);
+	
+	
+		$(window).resize(function () {
+			//make sure the window resize should trigger resize
+			if (settings.changeOnResize) {
+				//recalculate the adjusted height on resize
+				adjustedHeight = $(window).height() - theOffset;
+				//resize the image
+				posImg();
+			}
+		});
+	
+		adjustedHeight = $(window).height() - theOffset;
+	
+		//check to make sure the image is loaded.
+		imgLoadCheck = setInterval(function () {
+			if ($(theImage).prop('complete') == true) {
+				posImg();
+				//run a function once the final image has loaded
+				if(functionCounter == allImages.length){
+					//run a function once when the first image loads
+					if (options.imageLoaded) {
+						options.imageLoaded();
+					}
+				}
+				functionCounter = functionCounter + 1;
+				clearInterval(imgLoadCheck);
+			}
+		}, 100);
+	});
 };

@@ -95,6 +95,7 @@ ul > li:last-child li{
 	padding: 10px 20px;
 	margin:15px 0;
 	background:#eee;
+	border-radius: 8px;
 }
 #examples li h3{
 	padding:0;
@@ -104,14 +105,14 @@ ul > li:last-child li{
 	background:#e9e9e9;
 }
 .round_top_left{
-	border-radius:10px 0 0 0 ;
+	border-radius:8px 0 0 0 ;
 }
 .round_top_right{
-	border-radius:0 10px 0 0 ;
+	border-radius:0 8px 0 0 ;
 }
 .round_bottom_right{
-	border-radius:0 0 10px 0 ;
+	border-radius:0 0 8px 0 ;
 }
 .round_bottom_left{
-	border-radius:0 0 0 10px ;
+	border-radius:0 0 0 8px ;
 }

@@ -11,4 +11,4 @@ These 2 problems are solved by the Perfect Fold Image Stretch plugin. There are 
 
 So designers are coders can live in harmony knowing that beautiful marquee images now can be enjoyed on all screen sizes while maintaing adherance to the fold rule.
 
-Plugin options are in the plugin source code.
+See intro.html for basic implementation. Then explore the examples folder for several different examples of using the plugin.

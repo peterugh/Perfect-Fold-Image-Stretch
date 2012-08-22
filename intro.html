@@ -6,7 +6,7 @@
 <link href="intro.css" rel="stylesheet" type="text/css">
 <link href="code.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body class="intro_page">
 <section>
     <h1>Perfect Fold Image Stretch plugin</h1>
     <p>By: Pete Rugh</p>
@@ -76,21 +76,22 @@
 <b>$</b>(<i>document</i>).ready(<i>function</i>(){
     <b>$</b>(<em>"img"</em>).sizeImage({
         alignVertical: <em>'bottom'</em>,
-        alignHorizontal: <em>'right'</em>
+        alignHorizontal: <em>'right'</em>,
+        changeOnResize: <strong>true</strong>,
         container: <em>'#stretch_holder'</em>,
         easingMethod: <em>'linear'</em>,
-        fadeTime: <strong>5000</strong>
+        fadeTime: <strong>5000</strong>,
         heightMax: <strong>900</strong>,
         heightMin: <strong>400</strong>,
-        offset: <strong>270</strong>,
-        changeOnResize: <strong>true</strong>,
         <span>imageLoaded</span>: <i>function</i>() {
             <span class="comment">//more code</span>
             <span class="comment">//stack plugin on top?</span>
         },
         <span>imageVisible</span>: <i>function</i>() {
             <span class="comment">//image is fully visible</span>
-        }
+        },
+        offset: <strong>270</strong>,
+        zIndexPlacer: <strong>10</strong>
     });
 });
 </pre>
@@ -221,7 +222,7 @@
                 <li>imageLoaded</li>
                 <li>function() {}</li>
                 <li>Type: Function</li>
-                <li>Execute code after the image is loaded. <strong>Fires 1 time only</strong>.</li>
+                <li>Execute code after all images passed in are loaded. <strong>Fires 1 time only</strong>.</li>
             </ul>
         </li>
         <li>
@@ -229,15 +230,23 @@
                 <li>imageVisible</li>
                 <li>function() {}</li>
                 <li>Type: Function</li>
-                <li>Execute code after the image is fully faded in.</li>
+                <li>Execute code after the images are fully faded in.</li>
             </ul>
         </li>
         <li>
             <ul>
-                <li class="round_bottom_left">offset</li>
+                <li>offset</li>
                 <li>0</li>
                 <li>Type: Int</li>
-                <li class="round_bottom_right">Amount of space to leave visible below image in viewport. Int is pixels</li>
+                <li>Amount of space to leave visible below image in viewport. Int is pixels</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li class="round_bottom_left">zIndexPlacer<br /><br /></li>
+                <li>100<br /><br /></li>
+                <li>Type: Int<br /><br /></li>
+                <li class="round_bottom_right">Starting z-index for positiong images on top of each other in the right order. This can help write css for proper z-index layering around the plugin effected image.</li>
             </ul>
         </li>
     </ul>

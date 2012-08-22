@@ -63,20 +63,21 @@
 <b>$</b>(<i>document</i>).ready(<i>function</i>(){
     <b>$</b>(<em>"#stretch_me"</em>).sizeImage({
         alignVertical: <em>'top'</em>,
-        alignHorizontal: <em>'right'</em>
+        alignHorizontal: <em>'right'</em>,
+        changeOnResize: <strong>false</strong>,
         container: <em>'#image_holder'</em>,
         easingMethod: <em>'linear'</em>,
         fadeTime: <strong>3000</strong>
         heightMax: <strong>500</strong>,
         heightMin: <strong>400</strong>,
-        offset: <strong>140</strong>,
-        changeOnResize: <strong>false</strong>,
         <span>imageLoaded</span>: <i>function</i>() {
             <i>alert</i>(<em>'image is loaded!'</em>);
         },
         <span>imageVisible</span>: <i>function</i>() {
             <i>alert</i>(<em>'image is fully visible!'</em>);
-        }
+        },
+        offset: <strong>140</strong>,
+        zIndexPlacer: <strong>1</strong>
     });
 });
 </pre>
@@ -99,19 +100,20 @@ $(document).ready(function(){
 	$('#stretch_me').sizeImage({
 		alignVertical: 'top',
 		alignHorizontal: 'right',
+		changeOnResize: false,
 		container: '#image_holder',
 		easingMethod: 'linear',
 		fadeTime: 3000,
 		heightMax: 500,
 		heightMin: 400,
 		offset: 140,
-		changeOnResize: false,
 		imageLoaded: function() {
 			alert('image is loaded!');
 		},
 		imageVisible: function() {
 			alert('image is fully visible!');
-		}
+		},
+		zIndexPlacer: 1
 	});
 	
 });

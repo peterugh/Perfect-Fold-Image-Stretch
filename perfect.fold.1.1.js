@@ -82,11 +82,11 @@ jQuery.fn.sizeImage = function (options) {
 		offset : 0,	//This means the container will extend to the bottom of the viewport, change it to move it up from the bottom of the viewport
 		changeOnResize: true,
 		imageLoaded: function () {},
-		imageVisible: function () {}
+		imageVisible: function () {},
+		zIndexPlacer: 100
 	}, options),
 	
 		functionCounter = 1,
-		zIndexPlacer = 100,
 		allImages = this;
 
 	$(settings.container)
@@ -105,7 +105,6 @@ jQuery.fn.sizeImage = function (options) {
 			scaledHeight,
 			scaledWidth,
 			halfOverflow,
-			//theOffset = settings.offset + $(settings.container).position().top,	//calculate the true offset. This accounts for the container not being at the top of the viewport
 			theOffset = settings.offset,
 			theImage = this, //grab the image the plugin is attached to
 			adjustedHeight = $(window).height() - theOffset, //Determine how much to allow below the image
@@ -125,10 +124,10 @@ jQuery.fn.sizeImage = function (options) {
 			.css({
 				opacity: 0,
 				position: 'absolute',
-				zIndex: zIndexPlacer
+				zIndex: settings.zIndexPlacer
 			});
 
-		zIndexPlacer = zIndexPlacer - 1;
+		settings.zIndexPlacer = settings.zIndexPlacer - 1;
 
 		//size container intitally
 		//this creates the "frame" for the image before we have to wait for it to load

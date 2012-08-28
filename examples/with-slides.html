@@ -9,7 +9,7 @@
 
 <body class="with_cycle">
 <section id="slide_show">
-	<ul>
+	<ul class="slides_container">
         <li>
             <img src="img/cycle/slide-1.jpg" alt="sculpture" class="stretch_me" />
         </li>
@@ -76,11 +76,14 @@
     <b>$</b>(<em>".stretch_me"</em>).sizeImage({
         fadeTime: <strong>1000</strong>
         offset: <strong>100</strong>,
-        changeOnResize: <strong>false</strong>,
+        container: <em>"#slide_show"</em>,
         <span>imageLoaded</span>: <i>function</i>() {
-            <b>$</b>(<em>'#slide_show ul'</em>).cycle({
-                timeout: <strong>3000</strong>,
-                speed: <strong>1000</strong>
+            <b>$</b>(<em>"#slide_show"</em>).slides({
+                generatePagination: <strong>false</strong>,
+                fadeSpeed: <strong>1000</strong>,
+                effect: <em>"fade"</em>,
+                crossfade: <strong>true</strong>,
+                play: <strong>3000</strong>
             });	
         }
     });
@@ -98,20 +101,22 @@
 </a>
 <script type="text/javascript" src="js/jq.1.8.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
-<script type="text/javascript" src="../perfect.fold.1.1.js"></script>
-<script type="text/javascript" src="js/cycle.js"></script>
+<script type="text/javascript" src="../perfect.fold.1.2.js"></script>
+<script type="text/javascript" src="js/slides.1.1.3.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	
 	$('.stretch_me').sizeImage({
 		fadeTime: 1000,
 		offset: 100,
-		changeOnResize: false,
+		container: "#slide_show",
 		imageLoaded: function(){
-			$('#slide_show ul').cycle({
-				timeout: 3000,
-				speed: 1000
-			});	
+			$("#slide_show").slides({
+				generatePagination: false,
+				fadeSpeed: 1000,
+				effect: "fade",
+				crossfade: true,
+				play: 3000
+			});
 		}
 	});
 });

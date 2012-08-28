@@ -116,3 +116,7 @@ ul > li:last-child li{
 .round_bottom_left{
 	border-radius:0 0 0 8px ;
 }
+.clear_both{
+	display:block;
+	clear:both;
+}

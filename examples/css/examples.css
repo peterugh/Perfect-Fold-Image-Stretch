@@ -38,6 +38,7 @@ body{
 	-moz-opacity: 0;
 	-khtml-opacity: 0;
 	opacity: 0;	
+	z-index:101;
 }
 #inner_content span{
 	background:#000;
@@ -123,14 +124,14 @@ body{
 	margin-left:-250px;
 	width:500px;
 	background:#272922;
-	z-index: 99;
+	z-index: 102;
 }
 #view_source_code{
 	background:no-repeat url(../img/view-source.png);
 	width:168px;
 	height:41px;
 	position:absolute;
-	z-index:98;
+	z-index:101;
 	top:15px;
 	right:15px;
 	display:block;

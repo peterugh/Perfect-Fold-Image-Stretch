@@ -84,7 +84,7 @@ jQuery.fn.sizeImage = function (options)
 			changeOnResize: true,
 			imageLoaded: function () {},
 			imageVisible: function () {},
-			zIndexPlacer: 100
+			zIndexPlacer: 1
 		}, options),
 	
 		//declare all variables as global.

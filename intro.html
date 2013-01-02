@@ -8,46 +8,46 @@
 </head>
 <body class="intro_page">
 <section>
-    <h1>Perfect Fold Image Stretch plugin</h1>
-    <p>By: Pete Rugh</p>
-    <h2>Introduction</h2>
-    <p>
-        This plugin is a solution to a problem I ran into enough times to necessitate an off-the-shelf solution. Given different browser sizes and in particular, different devices, deciding on where the fold is has become near impossible. This means that when beautiful marquee images are in a design, they need to be cropped to fit most folds. This leads to mixed results and leaves people with either no indication of further content, or an ugly design with a tiny marquee.
-    </p>
-    <p> 
-        Another issue is how to choose how wide to make an image. You can always shoot for 2560px wide (iMac 27"), but file sizes increase as it gets wider, and the audience you are catering to fails to justify the trade off.
-    </p>
-    <p> 
-        These 2 problems are solved by the Perfect Fold Image Stretch plugin. There are many other plugins that let you fill an entire screen vertically and horizontally, but they are not flexible. This plugin achieves what those plugins do, but adds the addition of an offset variable. You can now specify how much content you want showing below a marquee iamge. This means that you can offer the same amount of content to entice users to scroll to regardless of screen size.
-    </p>
-    <p> 
-        So designers and coders can live in harmony knowing that beautiful marquee images now can be enjoyed on all screen sizes while maintaing adherance to the fold rule.
-    </p>
-    <h2>Simplest Usage</h2>
-    <table cellspacing="0" id="code_block">
-        <tr>
-            <td valign="top" class="numbering">
+	<h1>Perfect Fold Image Stretch plugin</h1>
+	<p>By: Pete Rugh</p>
+	<h2>Introduction</h2>
+	<p>
+		This plugin is a solution to a problem I ran into enough times to necessitate an off-the-shelf solution. Given different browser sizes and in particular, different devices, deciding on where the fold is has become near impossible. This means that when beautiful marquee images are in a design, they need to be cropped to fit most folds. This leads to mixed results and leaves people with either no indication of further content, or an ugly design with a tiny marquee.
+	</p>
+	<p> 
+		Another issue is how to choose how wide to make an image. You can always shoot for 2560px wide (iMac 27"), but file sizes increase as it gets wider, and the audience you are catering to fails to justify the trade off.
+	</p>
+	<p> 
+		These 2 problems are solved by the Perfect Fold Image Stretch plugin. There are many other plugins that let you fill an entire screen vertically and horizontally, but they are not flexible. This plugin achieves what those plugins do, but adds the addition of an offset variable. You can now specify how much content you want showing below a marquee iamge. This means that you can offer the same amount of content to entice users to scroll to regardless of screen size.
+	</p>
+	<p> 
+		So designers and coders can live in harmony knowing that beautiful marquee images now can be enjoyed on all screen sizes while maintaing adherance to the fold rule.
+	</p>
+	<h2>Simplest Usage</h2>
+	<table cellspacing="0" id="code_block">
+		<tr>
+			<td valign="top" class="numbering">
 <pre class="numbering">
 1
 2
 3
 </pre>
-            </td>
-            <td valign="top" style="padding:0 0 0 10px;">
+			</td>
+			<td valign="top" style="padding:0 0 0 10px;">
 <pre>
 <b>$</b>(<i>document</i>).ready(<i>function</i>(){
-    <b>$</b>(<em>"img"</em>).sizeImage();
+	<b>$</b>(<em>"img"</em>).sizeImage();
 });
 </pre>
-            </td>
-        </tr>
-    </table>
-    
-    <h2>Utilizing all variables with non-default values</h2>
-    
-    <table cellspacing="0" id="code_block">
-        <tr>
-            <td valign="top" class="numbering">
+			</td>
+		</tr>
+	</table>
+	
+	<h2>Utilizing all variables with non-default values</h2>
+	
+	<table cellspacing="0" id="code_block">
+		<tr>
+			<td valign="top" class="numbering">
 <pre class="numbering">
 1
 2
@@ -70,190 +70,195 @@
 20
 21
 </pre>
-            </td>
-            <td valign="top" style="padding:0 0 0 10px;">
+			</td>
+			<td valign="top" style="padding:0 0 0 10px;">
 <pre>
 <b>$</b>(<i>document</i>).ready(<i>function</i>(){
-    <b>$</b>(<em>"img"</em>).sizeImage({
-        alignVertical: <em>'bottom'</em>,
-        alignHorizontal: <em>'right'</em>,
-        changeOnResize: <strong>true</strong>,
-        container: <em>'#stretch_holder'</em>,
-        easingMethod: <em>'linear'</em>,
-        fadeTime: <strong>5000</strong>,
-        heightMax: <strong>900</strong>,
-        heightMin: <strong>400</strong>,
-        <span>imageLoaded</span>: <i>function</i>() {
-            <span class="comment">//more code</span>
-            <span class="comment">//stack plugin on top?</span>
-        },
-        <span>imageVisible</span>: <i>function</i>() {
-            <span class="comment">//image is fully visible</span>
-        },
-        offset: <strong>270</strong>,
-        zIndexPlacer: <strong>10</strong>
-    });
+	<b>$</b>(<em>"img"</em>).sizeImage({
+		alignVertical: <em>'bottom'</em>,
+		alignHorizontal: <em>'right'</em>,
+		changeOnResize: <strong>true</strong>,
+		container: <em>'#stretch_holder'</em>,
+		easingMethod: <em>'linear'</em>,
+		fadeTime: <strong>5000</strong>,
+		heightMax: <strong>900</strong>,
+		heightMin: <strong>400</strong>,
+		<span>imageLoaded</span>: <i>function</i>() {
+			<span class="comment">//more code</span>
+			<span class="comment">//stack plugin on top?</span>
+		},
+		<span>imageVisible</span>: <i>function</i>() {
+			<span class="comment">//image is fully visible</span>
+		},
+		offset: <strong>270</strong>,
+		zIndexPlacer: <strong>10</strong>
+	});
 });
 </pre>
-            </td>
-        </tr>
-    </table>
-    
-    <h2>Examples</h2>
-    
-    <p>
-    	This plugin, although simple to use, also offers a lot of flexibility. I have created several examples to illustrate how to combine the options to suit your needs.
-    </p>
-    <p>
-        <strong>Note for iOS browsers</strong>. Use the meta viewport tag and set it to your content width. If you don't do this, the plugin will read actual device pixel width. For example 320px wide for iPhone Retina. Viewport info at <a href="http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html" target="_blank">iOS Developer Library</a>. 
-    </p>
-    
-    <ul id="examples">
-    	<li>
-            <h3><a href="examples/basic.html">Default Options</a></h3>           	            
-            <p>
-            	The plugin with no options passed into the object. Image fills entire visible window.
-            </p>
-        </li>
-    	<li>
-            <h3><a href="examples/with-offset.html">Default with vertical offset</a></h3>           	
-            <p>
-            	Setting a distance between image and bottom of visible window.
-            </p>
-        </li>
-    	<li>
-            <h3><a href="examples/as-container.html">Container content</a></h3>           	
-            <p>
-            	Using the plugin to set the targeted image as a background for content inside the same container.
-            </p>
-        </li>
-    	<li>
-            <h3><a href="examples/all-options.html">All options</a></h3>           	
-            <p>
-            	Overriding all the default options.
-            </p>
-        </li>
-    	<li>
-            <h3><a href="examples/with-slides.html">Coupled with SlidesJS Plugin</a></h3>           	
-            <p>
-            	This is an example of how you can pair this with another plugin. In this case, the slider plugin <a href="http://slidesjs.com/" target="_blank">SlidesJS</a>
-            </p>
-        </li>
-    	<li>
-            <h3><a href="examples/vertical-image.html">Vertical Image</a></h3>           	
-            <p>
-            	Showing the effect while using an image with a vertical aspect ration.
-            </p>
-        </li>
-    	<li>
-            <h3><a href="examples/small-image.html">Small Image</a></h3>           	
-            <p>
-            	The plugin will stretch a small image to fill the container just as how it shrinks a large image.
-            </p>
-        </li>
-    </ul>
-    
-    <h2>Default Values</h2>
-    
-    <ul id="default">
-        <li>
-            <ul>
-                <li class="round_top_left">alignHorizontal</li>
-                <li>'center'</li>
-                <li>Type: String</li>
-                <li class="round_top_right">'left', 'center', 'right'</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>alignVertical</li>
-                <li>'middle'</li>
-                <li>Type: String</li>
-                <li>'top', 'middle', 'bottom'</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>changeOnResize</li>
-                <li>true</li>
-                <li>Type: Bool</li>
-                <li>Whether or not to recalculate when resizing viewport</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>container</li>
-                <li>false</li>
-                <li>Type: Selector</li>
-                <li>A selector to be resized that isn't a parent</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>easingMethod</li>
-                <li>'swing'</li>
-                <li>Type: String</li>
-                <li>jQuery easing method</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>fadeTime</li>
-                <li>2000</li>
-                <li>Type: Int</li>
-                <li>Image fade in length</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>heightMax</li>
-                <li>null</li>
-                <li>Type: Int</li>
-                <li>Maximum image height</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>heightMin</li>
-                <li>null</li>
-                <li>Type: Int</li>
-                <li>Minimum image height</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>imageLoaded</li>
-                <li>function() {}</li>
-                <li>Type: Function</li>
-                <li>Execute code after all images passed in are loaded. <strong>Fires 1 time only</strong>.</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>imageVisible</li>
-                <li>function() {}</li>
-                <li>Type: Function</li>
-                <li>Execute code after the images are fully faded in.</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li>offset</li>
-                <li>0</li>
-                <li>Type: Int</li>
-                <li>Amount of space to leave visible below image in viewport. Int is pixels</li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li class="round_bottom_left">zIndexPlacer<br /><br /></li>
-                <li>1 (explicit)<br /><br /></li>
-                <li>Type: Int<br /><br /></li>
-                <li class="round_bottom_right">Starting z-index for positiong images on top of each other in the right order. This can help write css for proper z-index layering around the plugin effected image.</li>
-            </ul>
-        </li>
-    </ul>
-    <span class="clear_both"></span>
+			</td>
+		</tr>
+	</table>
+	
+	<h2>Examples</h2>
+	
+	<p>
+		This plugin, although simple to use, also offers a lot of flexibility. I have created several examples to illustrate how to combine the options to suit your needs.
+	</p>
+	<p>
+		<strong>Note for iOS browsers</strong>. Use the meta viewport tag and set it to your content width. If you don't do this, the plugin will read actual device pixel width. For example 320px wide for iPhone Retina. Viewport info at <a href="http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html" target="_blank">iOS Developer Library</a>. 
+	</p>
+	
+	<ul id="examples">
+		<li>
+			<h3><a href="examples/basic.html">Default Options</a></h3>           	            
+			<p>
+				The plugin with no options passed into the object. Image fills entire visible window.
+			</p>
+		</li>
+		<li>
+			<h3><a href="examples/with-offset.html">Default with vertical offset</a></h3>           	
+			<p>
+				Setting a distance between image and bottom of visible window.
+			</p>
+		</li>
+		<li>
+			<h3><a href="examples/as-container.html">Container content</a></h3>           	
+			<p>
+				Using the plugin to set the targeted image as a background for content inside the same container.
+			</p>
+		</li>
+		<li>
+			<h3><a href="examples/all-options.html">All options</a></h3>           	
+			<p>
+				Overriding all the default options.
+			</p>
+		</li>
+		<li>
+			<h3><a href="examples/with-slides.html">Coupled with SlidesJS Plugin</a></h3>           	
+			<p>
+				This is an example of how you can pair this with another plugin. In this case, the slider plugin <a href="http://slidesjs.com/" target="_blank">SlidesJS</a>
+			</p>
+		</li>
+		<li>
+			<h3><a href="examples/vertical-image.html">Vertical Image</a></h3>           	
+			<p>
+				Showing the effect while using an image with a vertical aspect ration.
+			</p>
+		</li>
+		<li>
+			<h3><a href="examples/small-image.html">Small Image</a></h3>           	
+			<p>
+				The plugin will stretch a small image to fill the container just as how it shrinks a large image.
+			</p>
+		</li>
+	</ul>
+	
+	<h2>Default Values</h2>
+	
+	<ul id="default">
+		<li>
+			<ul>
+				<li class="round_top_left">alignHorizontal</li>
+				<li>'center'</li>
+				<li>Type: String</li>
+				<li class="round_top_right">'left', 'center', 'right'</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>alignVertical</li>
+				<li>'middle'</li>
+				<li>Type: String</li>
+				<li>'top', 'middle', 'bottom'</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>changeOnResize</li>
+				<li>true</li>
+				<li>Type: Bool</li>
+				<li>Whether or not to recalculate when resizing viewport</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>container</li>
+				<li>false</li>
+				<li>Type: Selector</li>
+				<li>A selector to be resized that isn't a parent</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>easingMethod</li>
+				<li>'swing'</li>
+				<li>Type: String</li>
+				<li>jQuery easing method</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>fadeTime</li>
+				<li>2000</li>
+				<li>Type: Int</li>
+				<li>Image fade in length</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>heightMax</li>
+				<li>null</li>
+				<li>Type: Int</li>
+				<li>Maximum image height</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>heightMin</li>
+				<li>null</li>
+				<li>Type: Int</li>
+				<li>Minimum image height</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>imageLoaded</li>
+				<li>function() {}</li>
+				<li>Type: Function</li>
+				<li>Execute code after all images passed in are loaded. <strong>Fires 1 time only</strong>.</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>imageVisible</li>
+				<li>function() {}</li>
+				<li>Type: Function</li>
+				<li>Execute code after the images are fully faded in.</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>offset</li>
+				<li>0</li>
+				<li>Type: Int</li>
+				<li>Amount of space to leave visible below image in viewport. Int is pixels</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li class="round_bottom_left">zIndexPlacer<br /><br /></li>
+				<li>1 (explicit)<br /><br /></li>
+				<li>Type: Int<br /><br /></li>
+				<li class="round_bottom_right">Starting z-index for positiong images on top of each other in the right order. This can help write css for proper z-index layering around the plugin effected image.</li>
+			</ul>
+		</li>
+	</ul>
+	<span class="clear_both"></span>
+	
+	<h2>Bonus!</h2>
+	<p>
+		If you want an image to be unaffected by the plugin that is being included automatically add the class 'ignore'. This is useful if you have a set of images in a container, but only want some of them to be affected.
+	</p>
 </section>
 </body>
 </html>

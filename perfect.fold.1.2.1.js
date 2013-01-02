@@ -111,50 +111,54 @@ jQuery.fn.sizeImage = function (options)
 	function init()
 	{
 		allImages.each(function(index, theImage) 
-		{ 
-			//make it positioned absolute
-			//make image transparent until it is loaded	
-			$(theImage)
-				.css(
-				{
-					opacity: 0,
-					position: 'absolute',
-					zIndex: settings.zIndexPlacer
-				});
-
-			//size container intitally
-			//this creates the "frame" for the image before we have to wait for it to load
-			//the height will re-draw on resize
-			$(theImage).parent()
-				.css(
-				{
-					height: 1,
-					display: 'block',
-					left: '0',
-					overflow: 'hidden',
-					position: 'relative',
-					top: '0'
-				})
-				.height(adjustedHeight)
-				.width($(window).width());
-	  
-			theOffset = settings.offset;
-			adjustedHeight = $(window).height() - theOffset; //Determine how much to allow below the image
-	
-			//determine the proper height based on heightMax and heightMin
-			if (settings.heightMax != null && settings.heightMax < adjustedHeight) 
+		{
+			//skip images with the class 'ignore'
+			//request from Josh Bachelor - 1/2/2013
+			if(!$(theImage).hasClass('ignore'))
 			{
-				adjustedHeight = settings.heightMax;
-			}
-			if (settings.heightMin != null && settings.heightMin > adjustedHeight) 
-			{
-				adjustedHeight = settings.heightMin;
-			}
+				//make it positioned absolute
+				//make image transparent until it is loaded	
+				$(theImage)
+					.css(
+					{
+						opacity: 0,
+						position: 'absolute',
+						zIndex: settings.zIndexPlacer
+					});
 
-			settings.zIndexPlacer = settings.zIndexPlacer - 1;
+				//size container intitally
+				//this creates the "frame" for the image before we have to wait for it to load
+				//the height will re-draw on resize
+				$(theImage).parent()
+					.css(
+					{
+						height: 1,
+						display: 'block',
+						left: '0',
+						overflow: 'hidden',
+						position: 'relative',
+						top: '0'
+					})
+					.height(adjustedHeight)
+					.width($(window).width());
+		  
+				theOffset = settings.offset;
+				adjustedHeight = $(window).height() - theOffset; //Determine how much to allow below the image
+		
+				//determine the proper height based on heightMax and heightMin
+				if (settings.heightMax != null && settings.heightMax < adjustedHeight) 
+				{
+					adjustedHeight = settings.heightMax;
+				}
+				if (settings.heightMin != null && settings.heightMin > adjustedHeight) 
+				{
+					adjustedHeight = settings.heightMin;
+				}
 
-			adjustedHeight = $(window).height() - theOffset;
-	
+				settings.zIndexPlacer = settings.zIndexPlacer - 1;
+
+				adjustedHeight = $(window).height() - theOffset;
+			}
 		});
 		
 		loadImages();	
@@ -163,7 +167,6 @@ jQuery.fn.sizeImage = function (options)
 	
 	function posImg(theImage) 
 	{
-
 		//get height of box
 		adjustedHeight = $(window).height() - theOffset;
 
@@ -254,7 +257,10 @@ jQuery.fn.sizeImage = function (options)
 	{
 		allImages.each(function(index, element)
 		{
-			posImg(element);
+			if(!$(element).hasClass('ignore'))
+			{
+				posImg(element);
+			}
 		});
 		if(settings.imageLoaded)
 		{
@@ -270,10 +276,16 @@ jQuery.fn.sizeImage = function (options)
 			
 			allImages.each(function(index, element)
 			{
-				
-				if ($(element).prop('complete') == true) 
+				if(!$(element).hasClass('ignore'))
 				{
 					itemsFinished = itemsFinished + 1;
+				}
+				else
+				{
+					if ($(element).prop('complete') == true) 
+					{
+						itemsFinished = itemsFinished + 1;
+					}
 				}
 				
 			});
@@ -302,8 +314,11 @@ jQuery.fn.sizeImage = function (options)
 					.width($(window).width());
 			}
 			//resize the images
-			allImages.each(function(index, img) { 
-				posImg(img);
+			allImages.each(function(index, img) {
+				if(!$(img).hasClass('ignore'))
+				{
+					posImg(img);
+				}
 			});
 		}
 	});
